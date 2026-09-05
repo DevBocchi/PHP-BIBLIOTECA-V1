@@ -44,6 +44,7 @@ $query = "SELECT * FROM livros";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 $livros = $stmt->fetchALl();
+
 ?>
 
 <!DOCTYPE html>
@@ -91,15 +92,15 @@ $livros = $stmt->fetchALl();
     <input type="hidden" name="action" value="create">
 
     <label>Titulo:</label>
-    <input type="text" name="titulo" placeholder="Titulo...">
+    <input type="text" name="titulo" placeholder="Informe Titulo...">
     <br>
 
     <label>Autor</label>
-    <input type="text" name="autor" placeholder="Autor...">
+    <input type="text" name="autor" placeholder="Informe Autor...">
     <br>
 
     <label>Ano</label>
-    <input type="text" name="ano" placeholder="Ano...">
+    <input type="text" name="ano" placeholder="Informe Ano...">
     <br>
 
     <button type="submit" class="btn">Enviar</button>
