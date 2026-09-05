@@ -1,0 +1,215 @@
+/* ==========================================================================
+   style.css — estilização do front-end (não altera nenhuma lógica PHP)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg:            #2f2c79;
+    --bg-deep:       #262357;
+    --card:          #ffffff;
+    --text:          #1f2430;
+    --text-soft:     #5b6172;
+    --border:        #e3e5ef;
+    --accent:        #ff4d94;
+    --accent-dark:   #e23a7e;
+    --accent-ring:   rgba(255, 77, 148, 0.35);
+    --radius:        14px;
+    --shadow-card:   0 18px 40px rgba(0, 0, 0, 0.28);
+    --shadow-btn:    0 8px 18px rgba(255, 77, 148, 0.40);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 16px 64px;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at 20% 0%, #3b378f 0%, var(--bg) 45%, var(--bg-deep) 100%);
+    min-height: 100vh;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Títulos da página (ficam sobre o fundo) ---------------------------------- */
+body > h1,
+body > h2 {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+body > h1 {
+    font-size: 2rem;
+}
+
+body > h2 {
+    font-size: 1.4rem;
+    margin-top: 40px;
+}
+
+/* Cartão (card) — envolve cada formulário / livro ------------------------- */
+.card {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 28px 28px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.card + .card {
+    margin-top: 20px;
+}
+
+/* Formulário — labels e inputs organizados verticalmente ----------------- */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form br {
+    display: none; /* o espaçamento agora vem do flex/gap, não do <br> */
+}
+
+.form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 10px;
+}
+
+.form input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--text);
+    background: #fbfbfe;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-ring);
+    background: #ffffff;
+}
+
+.form input::placeholder {
+    color: #9aa0b4;
+}
+
+/* Botões ---------------------------------------------------------------- */
+.btn,
+.card button,
+.card .btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 22px;
+    font: inherit;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: var(--shadow-btn);
+    transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover,
+.card button:hover,
+.card .btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(255, 77, 148, 0.5);
+}
+
+.btn:active,
+.card button:active,
+.card .btn:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-btn);
+}
+
+.btn:focus-visible,
+.card button:focus-visible,
+.card .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--accent-ring), var(--shadow-btn);
+}
+
+/* Botão secundário (ex.: Deletar / Excluir) ----------------------------- */
+.btn--ghost {
+    background: transparent;
+    color: var(--accent-dark);
+    border: 1px solid var(--accent);
+    box-shadow: none;
+}
+
+.btn--ghost:hover {
+    background: #fff0f6;
+    color: var(--accent-dark);
+    box-shadow: none;
+}
+
+/* Ações lado a lado dentro do card da lista ---------------------------- */
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-actions .btn {
+    margin-top: 8px;
+}
+
+/* Metadados de cada livro na listagem -------------------------------- */
+.book-meta {
+    margin: 0 0 4px;
+}
+
+.book-meta strong {
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+/* Responsivo -------------------------------------------------------- */
+@media (max-width: 560px) {
+    body {
+        padding: 24px 12px 48px;
+    }
+
+    body > h1 {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        padding: 22px 18px 20px;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-actions .btn {
+        width: 100%;
+    }
+}

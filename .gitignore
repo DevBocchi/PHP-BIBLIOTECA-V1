@@ -1,0 +1,5 @@
+database.php
+.env
+.idea/
+.vscode/
+*.log
